@@ -73,4 +73,6 @@
       (-> db-atom
           (swap! assoc-in  [username :password] password)
           (get username)
-          (dissoc :password)))))
+          (dissoc :password))
+      (throw (ex-info "User does not exist"
+                      {:reason :change-user-password.error/does-not-exist})))))
