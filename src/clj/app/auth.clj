@@ -66,11 +66,11 @@
 (defn change-user-password
   [db-atom username password]
   (if-let [password-violations (not-empty (password-rules password))]
-  (throw (ex-info "Password does not meet criteria"
+    (throw (ex-info "Password does not meet criteria"
                   {:reason     :create-user.error/password-violations
-                   :violations password-violations})))
-  (if (get @db-atom username)
-    (-> db-atom
-        (swap! assoc-in  [username :password] new-password)
-        (get username)
-        (dissoc :password))))
+                   :violations password-violations}))
+    (if (get @db-atom username)
+      (-> db-atom
+          (swap! assoc-in  [username :password] password)
+          (get username)
+          (dissoc :password)))))
