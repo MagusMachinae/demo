@@ -1,4 +1,4 @@
-(ns app.api
+(ns demo.backend.api
   (:require [reitit.coercion.spec]
             [spec-tools.data-spec :as ds]
             [app.auth :as auth]))

@@ -1,4 +1,4 @@
-(ns app.auth
+(ns demo.backend.auth
   (:require [clojure.string :as str]))
 
 ; an in memory database of registered users

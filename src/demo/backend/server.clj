@@ -1,4 +1,4 @@
-(ns app.server
+(ns demo.backend.server
   (:require [ring.adapter.jetty :as jetty]
             [ring.middleware.params :as params]
             [reitit.ring.middleware.muuntaja :as muuntaja]
