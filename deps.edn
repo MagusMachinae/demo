@@ -1,11 +1,13 @@
 {:paths   ["src/clj" "resources"]
- :deps    {org.clojure/clojure       {:mvn/version "1.10.1"}
-           org.clojure/clojurescript {:mvn/version "1.10.520"}
+ :deps    {org.clojure/clojure       {:mvn/version "1.10.3"}
+           org.clojure/clojurescript {:mvn/version "1.10.879"}
            metosin/reitit            {:mvn/version "0.5.6"}
            ring/ring-jetty-adapter   {:mvn/version "1.7.1"}
            com.fulcrologic/fulcro {:mvn/version "3.5.6"}
-           com.wsscode/pathom     {:mvn/version "2.2.15"}}
+           com.wsscode/pathom     {:mvn/version "2.2.15"}
+           thheller/shadow-cljs        {:mvn/version "2.15.12"}
+           com.google.javascript/closure-compiler-unshaded {:mvn/version "v20210505"}}
  :aliases {:server {:main-opts  ["-m" "backend.server"]
                     :extra-deps {org.clojure/clojurescript   {:mvn/version "1.10.742"}
-                                 thheller/shadow-cljs        {:mvn/version "2.8.107"}
+                                 thheller/shadow-cljs        {:mvn/version "2.15.12"}
                                  binaryage/devtools          {:mvn/version "0.9.10"}}}}}

@@ -1,9 +1,9 @@
 {:deps     {:aliases [:dev]}
  :dev-http {8000 "classpath:public"}
- :builds   {:main {:target     :browser
-                   :output-dir "resources/public/js/main"
-                   :asset-path "/js/main"
-                   :modules    {:client {:init-fn demo.frontend.client/init
-                                         :entries [demo.frontend.client]}}
-                   :devtools   {:after-load demo.frontend.client/refresh
-                                :preloads   [com.fulcrologic.fulcro.inspect.preload]}}}}
+ :builds   {:frontend {:target     :browser
+                       :output-dir "resources/public/js/main"
+                       :asset-path "/js/main"
+                       :modules    {:main {:init-fn demo.frontend.client/init
+                                           :entries [demo.frontend.client]}}
+                       :devtools   {:after-load demo.frontend.client/refresh
+                                    :preloads   [com.fulcrologic.fulcro.inspect.preload]}}}}
