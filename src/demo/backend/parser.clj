@@ -1,8 +1,9 @@
 (ns app.parser
   (:require
-    [com.wsscode.pathom.core :as p]
-    [com.wsscode.pathom.connect :as pc]
-    [taoensso.timbre :as log]))
+   [com.wsscode.pathom
+    [core :as p]
+    [connect :as pc]]
+   [taoensso.timbre :as log]))
 
 (def resolvers [])
 
