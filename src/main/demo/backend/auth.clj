@@ -29,13 +29,15 @@
           (conj :password.error/missing-uppercase)))
 
 (defn authenticate-user
-  "Returns a user map when a username and password are correct, or nil when incorrect"
+  "Returns a user map when a username and password are correct, or throw an exception if incorrect"
   [db username password]
-  (when-let [{known-password :password :as user} (get db (str/lower-case username))]
+  (if-let [{known-password :password :as user} (get db (str/lower-case username))]
     (if (= password known-password)
       (dissoc user :password)
       (throw (ex-info "Invalid username or password"
-                      {:reason :login.error/invalid-credentials})))))
+                      {:reason :login.error/invalid-credentials})))
+    (throw (ex-info "Invalid username or password"
+                    {:reason :login.error/invalid-credentials}))))
 
 (defn create-user
   "Create a user by adding them to the database, and returns the user's details except for their password"
