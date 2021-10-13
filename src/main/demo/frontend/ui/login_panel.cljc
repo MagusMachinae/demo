@@ -21,6 +21,15 @@
    ::auth/check-session `account/check-session
    ::auth/logout        `account/logout
 
-   :ident               (fn [] [:component/id ::LoginForm])})
-
-(defsc PasswordRecoveryPanel)
+   :ident               (fn [] [:component/id ::LoginForm])}
+  (div (form
+         (label "Username")
+         (input {:type     "username"
+                 :onChange (fn [evt] (m/set-string! this :ui/username :event evt))
+                 :value    (or username "")})
+         (label "Password")
+         (input {:type     "username"
+                 :onChange (fn [evt] (m/set-string! this :ui/username :event evt))
+                 :value    (or username "")})
+         (button {:onClick (fn [] (comp/transact! this [(account/login {:username username :password password})]))})
+         (button {:onClick (fn [] (comp/transact! this [(account/change-password {:username username :password password})]))}))))
