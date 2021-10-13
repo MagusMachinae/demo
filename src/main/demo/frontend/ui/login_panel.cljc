@@ -1,6 +1,6 @@
 (ns frontend.ui.login-panel
   (:require
-    [backend.auth :as account]
+    [demo.backend.auth :as account]
     #?@(:cljs [[com.fulcrologic.semantic-ui.modules.modal.ui-modal :refer [ui-modal]]
                [com.fulcrologic.semantic-ui.modules.modal.ui-modal-header :refer [ui-modal-header]]
                [com.fulcrologic.semantic-ui.modules.modal.ui-modal-content :refer [ui-modal-content]]])
