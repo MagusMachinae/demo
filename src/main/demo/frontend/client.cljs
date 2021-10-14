@@ -1,18 +1,16 @@
 (ns demo.frontend.client
   (:require
-    [com.fulcrologic.fulcro.application :as ap]
+    [demo.frontend.ui.login-panel :as log]
+    [com.fulcrologic.fulcro.application :as app]
     [com.fulcrologic.fulcro.components :as comp :refer [defsc]]
     [com.fulcrologic.fulcro.dom :as dom]))
 
 (defonce app (app/fulcro-app))
 
-(defsc Root [this props]
-  (dom/div "TODO"))
-
 (defn ^:export init
   "Shadow-cljs sets this up to be our entry-point function. See shadow-cljs.edn `:init-fn` in the modules of the main build."
   []
-  (app/mount! app Root "app")
+  (app/mount! app log/LoginPanel "app")
   (js/console.log "Loaded"))
 
 (defn ^:export refresh
