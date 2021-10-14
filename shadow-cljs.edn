@@ -1,4 +1,5 @@
-{:deps     {:aliases [:dev]}
+{:paths ["src/main"]
+ :deps     {:aliases [:dev]}
  :dev-http {8000 "classpath:public"}
  :builds   {:frontend {:target     :browser
                        :output-dir "resources/public/js/main"
