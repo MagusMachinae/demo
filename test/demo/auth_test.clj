@@ -52,4 +52,14 @@
       (is (= "new-pass"
              (get-in @test-db-2 ["i-exist" :password]))))))
 
-(deftest create-user)
+(deftest create-user
+  (testing "trying to create a user that already exists throws an error"
+    (is (= {:msg  "User already exists"
+            :data {:reason :create-user.error/already-exists}}
+           (catch-thrown-info (auth/create-user test-db "i-exist" "correct?")))))
+  (testing "db is updated with new user"
+    (let [test-db-2 test-db
+          _         (auth/create-user test-db-2 "i-exist-too!" "new-pass")]
+          (is (= {:id       "i-exist-too!"
+                  :password "new-pass"}
+                 (get @test-db-2 "i-exist-too!"))))))
