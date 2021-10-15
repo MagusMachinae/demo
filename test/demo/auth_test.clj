@@ -2,6 +2,17 @@
   (:require [clojure.test :refer [deftest is testing]]
             [demo.backend.auth :as auth]))
 
+(def test-db (atom {"i-exist" {:id       "i-exist"
+                                         :password "correct"
+                                         :role     :user}}))
+
+(defmacro catch-thrown-info [f]
+   `(try
+      ~f
+      (catch
+       clojure.lang.ExceptionInfo e#
+        {:msg (ex-message e#) :data (ex-data e#)})))
+
 
 (deftest password-rules
   (testing "all rules are applied individually and in composition"
@@ -18,3 +29,9 @@
              :password.error/missing-lowercase
              :password.error/missing-special-character}
            (auth/password-rules "")))))
+
+(deftest authenticate-user
+  (testing "exceptions are thrown when user or password checks return nil"
+    (is (= {:msg "Invalid username or password",
+            :data {:reason :login.error/invalid-credentials}}
+         (catch-thrown-info (auth/authenticate-user test-db "i-exist" "incorrect"))))))
