@@ -26,9 +26,9 @@
       {:status 401
        :body   (ex-data e)})))
 
-(defn change-user-password
+(defn change-user-password-handler
   "Web handler to change a user's password"
-  [{{{:keys [username old-password new-password]} :query} :parameters} :as ctx]
+  [{{{:keys [username old-password new-password]} :body} :parameters} :as ctx]
   (try
     (auth/authenticate-user @auth/user-database username old-password)
     {:status 200
