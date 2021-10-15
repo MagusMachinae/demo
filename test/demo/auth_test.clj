@@ -38,7 +38,7 @@
           (catch-thrown-info (auth/authenticate-user test-db "i-don't-exist" "")))))
   (testing "successful login returns user map without password"
     (is (= {:id "i-exist"
-            :role user}
+            :role :user}
            (auth/authenticate-user test-db "i-exist" "correct")))))
 
 (deftest change-user-password
