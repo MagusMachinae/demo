@@ -41,3 +41,15 @@
             :role user}
            (auth/authenticate-user test-db "i-exist" "correct")))))
 
+(deftest change-user-password
+   (testing "trying to reset the password of a user who doesn't exist throws an exception"
+     (is (= {:msg  "User does not exist"
+             :data {:reason :change-user-password.error/does-not-exist}}
+            (auth/change-user-password test-db "i-don't-exist" "new-pass"))))
+  (testing "db is updated with new password"
+    (let [test-db-2 test-db
+          _         (auth/change-user-password test-db-2 "i-exist" "new-pass")]
+      (is (= "new-pass"
+             (get-in @test-db-2 ["i-exist" :password]))))))
+
+(deftest create-user)
