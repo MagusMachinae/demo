@@ -34,4 +34,6 @@
   (testing "exceptions are thrown when user or password checks return nil"
     (is (= {:msg "Invalid username or password",
             :data {:reason :login.error/invalid-credentials}}
-         (catch-thrown-info (auth/authenticate-user test-db "i-exist" "incorrect"))))))
+          (catch-thrown-info (auth/authenticate-user test-db "i-exist" "incorrect"))
+          (catch-thrown-info (auth/authenticate-user test-db "i-don't-exist" ""))))))
+
