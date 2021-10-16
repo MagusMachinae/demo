@@ -61,5 +61,6 @@
     (let [test-db-2 test-db
           _         (auth/create-user test-db-2 "i-exist-too!" "new-pass")]
           (is (= {:id       "i-exist-too!"
-                  :password "new-pass"}
+                  :password "new-pass"
+                  :role     :user}
                  (get @test-db-2 "i-exist-too!"))))))
