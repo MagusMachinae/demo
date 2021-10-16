@@ -54,4 +54,4 @@
                                              :old-password  string?
                                              :new-password  string?
                                              (ds/opt :role) keyword?}}
-                         :handler    create-user-handler}}]]])
+                         :handler    change-user-password-handler}}]]])
