@@ -6,6 +6,7 @@
            com.fulcrologic/fulcro {:mvn/version "3.5.6"}
            com.wsscode/pathom     {:mvn/version "2.2.15"}
            thheller/shadow-cljs        {:mvn/version "2.15.12"}
+           ring/ring-mock               {:mvn/version "0.4.0"}
            com.google.javascript/closure-compiler-unshaded {:mvn/version "v20210505"}}
  :aliases {:server {:main-opts  ["-m" "demo.backend.server"]
                     :extra-deps {org.clojure/clojurescript   {:mvn/version "1.10.742"}
